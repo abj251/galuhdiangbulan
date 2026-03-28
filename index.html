@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galuh Diang Bulan - Kolam Renang Ceria Tapin</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js (for reactive states like scroll and mobile menu) -->
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        quicksand: ['Quicksand', 'sans-serif'],
+                    },
+                    animation: {
+                        'spin-slow': 'spin-slow 12s linear infinite',
+                        'bounce-slow': 'bounce-slow 3s infinite',
+                    },
+                    keyframes: {
+                        'spin-slow': {
+                            'from': { transform: 'rotate(0deg)' },
+                            'to': { transform: 'rotate(360deg)' },
+                        },
+                        'bounce-slow': {
+                            '0%, 100%': { transform: 'translateY(-5%)', 'animation-timing-function': 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'none', 'animation-timing-function': 'cubic-bezier(0,0,0.2,1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .kids-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-46-45c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm54 0c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM57 10c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-8 48c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM25 30c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm60 15c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM21 57c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm36 30c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-[#F0F9FF] text-slate-800 font-quicksand overflow-x-hidden" x-data="{ isScrolled: false }" @scroll.window="isScrolled = (window.pageYOffset > 50)">
+
+    <!-- Navigasi -->
+    <nav :class="isScrolled ? 'bg-white/90 backdrop-blur-md shadow-lg py-2' : 'bg-transparent py-4'" class="fixed w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-cyan-500 p-2 rounded-2xl rotate-3 shadow-lg">
+                    <i data-lucide="waves" class="text-white w-6 h-6"></i>
+                </div>
+                <span :class="isScrolled ? 'text-cyan-600' : 'text-white'" class="text-2xl font-bold tracking-tight transition-colors">
+                    Galuh Diang Bulan
+                </span>
+            </div>
+
+            <div :class="isScrolled ? 'text-slate-600' : 'text-white'" class="hidden md:flex space-x-8 font-bold transition-colors">
+                <a href="#beranda" class="hover:text-cyan-400 transition-colors text-lg">Beranda</a>
+                <a href="#fasilitas" class="hover:text-cyan-400 transition-colors text-lg">Fasilitas</a>
+                <a href="#harga" class="hover:text-cyan-400 transition-colors text-lg">Harga</a>
+                <a href="#lokasi" class="hover:text-cyan-400 transition-colors text-lg">Lokasi</a>
+            </div>
+
+            <button onclick="window.open('https://www.google.com/maps/search/?api=1&query=3579%2BXJJ%2C+Rantau+Kiwa%2C+Tapin+Utara%2C+Tapin+Regency%2C+South+Kalimantan+71114', '_blank')"
+                class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-2xl font-bold transition-all shadow-lg hover:shadow-orange-200 hover:-translate-y-1">
+                Ayo Berenang!
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative h-[95vh] flex items-center overflow-hidden rounded-b-[60px] md:rounded-b-[120px] shadow-2xl">
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 via-cyan-400 to-teal-400 z-10 opacity-90"></div>
+            
+            <!-- Kids Pattern -->
+            <div class="absolute inset-0 z-15 opacity-20 kids-pattern"></div>
+            
+            <img src="https://images.unsplash.com/photo-1519733413917-88220bc04471?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Anak-anak berenang ceria" 
+                 class="w-full h-full object-cover mix-blend-overlay">
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="absolute inset-0 z-15 overflow-hidden pointer-events-none">
+            <i data-lucide="cloud" class="absolute top-20 left-[10%] text-white/40 w-16 h-16 animate-pulse"></i>
+            <i data-lucide="sun" class="absolute top-40 right-[15%] text-yellow-300/40 w-24 h-24 animate-spin-slow"></i>
+            <i data-lucide="star" class="absolute bottom-40 left-[20%] text-white/30 w-12 h-12 animate-bounce-slow"></i>
+            <i data-lucide="smile" class="absolute top-[30%] left-[5%] text-white/20 w-10 h-10 rotate-12"></i>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-20 text-white text-center md:text-left">
+            <div class="max-w-4xl mx-auto md:mx-0">
+                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white border border-white/30 px-6 py-2 rounded-full text-sm font-bold mb-8 rotate-[-1deg] shadow-xl uppercase tracking-widest">
+                    <i data-lucide="star" class="w-4 h-4 text-yellow-300 fill-yellow-300"></i> Kolam Renang Terpopuler di Tapin
+                </div>
+                <h1 class="text-5xl md:text-8xl font-black leading-[1.1] mb-8 drop-shadow-[0_10px_10px_rgba(0,0,0,0.3)]">
+                    Dunia Air <br/> 
+                    <span class="text-yellow-300 inline-block transform hover:scale-110 transition-transform cursor-default">Penuh Tawa!</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-blue-50 mb-10 font-bold max-w-2xl drop-shadow-md leading-relaxed">
+                    Ciptakan momen tak terlupakan bersama si kecil di Galuh Diang Bulan. Air bersih, area aman, dan pastinya seru bangeet!
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
+                    <a href="#lokasi" 
+                        class="group bg-yellow-400 hover:bg-yellow-300 text-blue-900 px-12 py-6 rounded-[30px] font-black text-2xl flex items-center justify-center gap-4 transition-all shadow-[0_15px_0_rgb(202,138,4)] active:shadow-none active:translate-y-[15px]">
+                        Ayo Berangkat! <i data-lucide="map-pin" class="w-8 h-8 group-hover:animate-bounce"></i>
+                    </a>
+                    <div class="flex -space-x-4">
+                        <img src="https://i.pravatar.cc/150?u=11" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-4 border-white shadow-lg transform hover:-translate-y-2 transition-transform">
+                        <img src="https://i.pravatar.cc/150?u=12" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-4 border-white shadow-lg transform hover:-translate-y-2 transition-transform">
+                        <img src="https://i.pravatar.cc/150?u=13" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-4 border-white shadow-lg transform hover:-translate-y-2 transition-transform">
+                        <div class="w-12 h-12 md:w-14 md:h-14 rounded-full bg-white border-4 border-white flex items-center justify-center text-blue-600 font-black text-xs shadow-lg">
+                            +1k
+                        </div>
+                    </div>
+                    <p class="text-white font-bold text-lg hidden lg:block">Anak Ceria Minggu Ini!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="absolute bottom-0 left-0 w-full leading-none z-30">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[80px] fill-white">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C58.47,103.4,122.6,110.1,185.39,104.53,247,99,298.39,71.27,321.39,56.44Z" class="animate-pulse"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Fasilitas -->
+    <section id="fasilitas" class="py-24 container mx-auto px-6 relative">
+        <div class="text-center mb-16">
+            <div class="inline-block bg-cyan-100 text-cyan-600 px-4 py-1 rounded-full text-sm font-black mb-4 uppercase tracking-widest">Fasilitas Lengkap</div>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-800 mb-4">Kenapa Harus ke Sini?</h2>
+            <p class="mt-4 text-slate-500 max-w-xl mx-auto text-xl font-medium">Tempat paling asyik buat main air bareng keluarga!</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <!-- Card 1 -->
+            <div class="group bg-white p-8 rounded-[40px] shadow-sm border-2 border-transparent hover:border-cyan-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <div class="mb-6 bg-slate-50 w-20 h-20 rounded-[30px] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-0 text-cyan-500">
+                    <i data-lucide="waves" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-4">Airnya Segar Bangeet!</h3>
+                <p class="text-slate-500 text-lg leading-relaxed font-medium">Kolam selalu dikuras teratur supaya adik-adik bisa berenang dengan sehat dan ceria.</p>
+            </div>
+            <!-- Card 2 -->
+            <div class="group bg-white p-8 rounded-[40px] shadow-sm border-2 border-transparent hover:border-cyan-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <div class="mb-6 bg-slate-50 w-20 h-20 rounded-[30px] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-0 text-pink-500">
+                    <i data-lucide="heart" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-4">Main Seru & Aman</h3>
+                <p class="text-slate-500 text-lg leading-relaxed font-medium">Ada kolam khusus balita yang dangkal. Ayah dan Bunda bisa tenang menjaga si kecil.</p>
+            </div>
+            <!-- Card 3 -->
+            <div class="group bg-white p-8 rounded-[40px] shadow-sm border-2 border-transparent hover:border-cyan-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <div class="mb-6 bg-slate-50 w-20 h-20 rounded-[30px] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-0 text-orange-500">
+                    <i data-lucide="coffee" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-4">Camilan Enak</h3>
+                <p class="text-slate-500 text-lg leading-relaxed font-medium">Habis berenang lapar? Tenang, ada kantin dengan minuman segar dan snack favorit.</p>
+            </div>
+            <!-- Card 4 -->
+            <div class="group bg-white p-8 rounded-[40px] shadow-sm border-2 border-transparent hover:border-cyan-100 hover:shadow-2xl transition-all duration-500 text-center">
+                <div class="mb-6 bg-slate-50 w-20 h-20 rounded-[30px] flex items-center justify-center mx-auto group-hover:scale-110 transition-transform duration-500 rotate-3 group-hover:rotate-0 text-green-500">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-800 mb-4">Dekat & Mudah</h3>
+                <p class="text-slate-500 text-lg leading-relaxed font-medium">Lokasinya di pusat kota Rantau. Parkirnya luas, muat buat mobil keluarga besar!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Harga & Tiket -->
+    <section id="harga" class="py-24 bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-[50px] md:rounded-[100px] mx-4 md:mx-10 shadow-2xl overflow-hidden relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="text-center md:text-left">
+                    <div class="inline-block p-3 bg-white/20 rounded-2xl mb-6">
+                        <i data-lucide="ticket" class="w-10 h-10"></i>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8">Tiket Murah, <br/><span class="text-yellow-300">Main Sepuasnya!</span></h2>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-[30px] border border-white/20">
+                            <p class="text-cyan-100 font-bold mb-1 uppercase text-sm tracking-widest">Jam Main</p>
+                            <p class="text-2xl font-black">08.00 - 17.30</p>
+                            <p class="text-sm opacity-80">Buka Setiap Hari!</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-[30px] border border-white/20">
+                            <p class="text-cyan-100 font-bold mb-1 uppercase text-sm tracking-widest">Harga Tiket</p>
+                            <p class="text-2xl font-black">Rp10rb - 15rb</p>
+                            <p class="text-sm opacity-80">Per Orang</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[50px] p-10 text-slate-800 shadow-2xl relative rotate-1">
+                    <h3 class="text-3xl font-black mb-8 text-center text-cyan-600">Info Penting 💡</h3>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center group text-xl font-bold text-slate-600">
+                            <span>Gazebo Tersedia</span>
+                            <span class="bg-green-100 text-green-600 font-bold px-4 py-2 rounded-2xl text-sm uppercase tracking-wide">Gratis</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xl font-bold text-slate-600">
+                            <span>Paket Makan</span>
+                            <span class="bg-slate-100 text-slate-400 font-bold px-4 py-2 rounded-2xl text-sm">Belum Tersedia</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xl font-bold text-slate-600">
+                            <span>Sewa Pelampung</span>
+                            <span class="bg-green-50 text-green-600 font-bold px-4 py-2 rounded-2xl text-sm">Ada di Lokasi</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 p-5 bg-orange-50 rounded-[30px] border-2 border-dashed border-orange-200 flex gap-4">
+                        <div class="bg-orange-500 text-white p-2 rounded-full h-fit">
+                            <i data-lucide="info" class="w-4 h-4"></i>
+                        </div>
+                        <p class="text-sm text-orange-800 font-medium italic">
+                            "Hore! Gazebo di sini bisa dipakai gratis lho kawan-kawan. Tapi mohon maaf, untuk paket makan siang belum tersedia ya."
+                        </p>
+                    </div>
+
+                    <button onclick="window.open('https://wa.me/6281234567890', '_blank')"
+                        class="w-full mt-10 bg-orange-500 hover:bg-orange-600 text-white font-black text-xl py-5 rounded-[25px] transition-all shadow-xl hover:shadow-orange-200 flex items-center justify-center gap-3">
+                        Tanya Lewat WhatsApp <i data-lucide="phone" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lokasi -->
+    <section id="lokasi" class="py-24 container mx-auto px-6">
+        <div class="bg-white rounded-[50px] p-8 md:p-16 shadow-xl flex flex-col md:flex-row gap-12 items-center overflow-hidden border-4 border-cyan-50">
+            <div class="flex-1 order-2 md:order-1">
+                <h2 class="text-4xl font-black text-cyan-600 mb-6 uppercase tracking-tight">Lokasi Kami</h2>
+                <div class="flex items-start gap-4 mb-8">
+                    <div class="bg-cyan-100 p-3 rounded-2xl text-cyan-600">
+                        <i data-lucide="map-pin" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <p class="text-xl font-bold text-slate-600 leading-tight mb-1">3579+XJJ, Rantau Kiwa, Tapin Utara</p>
+                        <p class="text-slate-500 font-medium">Kabupaten Tapin, Kalimantan Selatan 71114</p>
+                    </div>
+                </div>
+                <button onclick="window.open('https://www.google.com/maps/search/?api=1&query=3579%2BXJJ%2C+Rantau+Kiwa%2C+Tapin+Utara%2C+Tapin+Regency%2C+South+Kalimantan+71114', '_blank')"
+                    class="bg-cyan-500 hover:bg-cyan-400 text-white px-8 py-4 rounded-[20px] font-black text-lg transition-all flex items-center gap-2 shadow-lg shadow-cyan-100">
+                    Buka di Google Maps <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="flex-1 w-full h-[350px] md:h-[450px] rounded-[40px] overflow-hidden shadow-inner bg-slate-50 flex items-center justify-center order-1 md:order-2 relative group">
+                <div class="absolute inset-0 bg-cyan-500/5 group-hover:bg-cyan-500/10 transition-colors z-0"></div>
+                <div class="z-10 text-center p-6">
+                    <div class="bg-white p-8 rounded-full shadow-2xl mb-4 inline-block animate-bounce">
+                        <i data-lucide="map-pin" class="w-14 h-14 text-red-500"></i>
+                    </div>
+                    <p class="font-black text-2xl text-slate-700">Sampai Jumpa di Sini!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-20 border-t-8 border-cyan-50">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-6">
+                <div class="bg-cyan-500 p-2 rounded-xl shadow-lg text-white">
+                    <i data-lucide="waves" class="w-6 h-6"></i>
+                </div>
+                <span class="text-3xl font-black text-cyan-600 tracking-tight">Galuh Diang Bulan</span>
+            </div>
+            
+            <div class="bg-slate-50 px-8 py-5 rounded-[30px] inline-block mb-10 border border-slate-100 shadow-sm">
+                <p class="text-slate-500 text-lg font-bold">
+                    Dikelola oleh <span class="text-blue-600 uppercase">Dinas Pemuda Dan Olahraga Pemkab Tapin</span>
+                </p>
+            </div>
+
+            <div class="mb-12">
+                <p class="text-slate-400 font-bold text-sm uppercase tracking-widest mb-8">Temukan kami di Media Sosial</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://www.instagram.com/dispora.tapin" target="_blank" class="w-16 h-16 bg-pink-50 rounded-2xl flex items-center justify-center text-pink-500 hover:bg-pink-500 hover:text-white transition-all shadow-xl shadow-pink-100 hover:-translate-y-2"><i data-lucide="instagram"></i></a>
+                    <a href="https://www.facebook.com/Dispora Tapin" target="_blank" class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition-all shadow-xl shadow-blue-100 hover:-translate-y-2"><i data-lucide="facebook"></i></a>
+                    <a href="https://www.youtube.com/@disporatapin" target="_blank" class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 hover:bg-red-500 hover:text-white transition-all shadow-xl shadow-red-100 hover:-translate-y-2"><i data-lucide="youtube"></i></a>
+                    <a href="http://dispora.profile.tapinkab.go.id/" target="_blank" class="w-16 h-16 bg-cyan-50 rounded-2xl flex items-center justify-center text-cyan-500 hover:bg-cyan-500 hover:text-white transition-all shadow-xl shadow-cyan-100 hover:-translate-y-2"><i data-lucide="globe"></i></a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center text-green-500 hover:bg-green-500 hover:text-white transition-all shadow-xl shadow-green-100 hover:-translate-y-2"><i data-lucide="phone"></i></a>
+                </div>
+            </div>
+            
+            <div class="pt-10 border-t border-slate-100 text-slate-300 font-bold text-sm">
+                © 2024 Dibuat dengan penuh keceriaan oleh Pengelola Kolam Renang Galuh Diang Bulan Kab Tapin 
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inisialisasi Ikon Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
